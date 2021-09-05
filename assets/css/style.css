@@ -1,0 +1,137 @@
+/* Dash board */
+
+.dashboard{
+    position: fixed;
+    padding: 16px 16px 14px;
+    top: 0;
+    width: 100%;
+    max-width: 480px;
+    border-bottom: 1px solid #ebebeb;
+    background-color: var(--white-color);
+}
+
+/* Header */
+header {
+    text-align: center;
+}
+
+header  h4{
+    font-size: 1.4rem;
+    margin: 10px 0;
+}
+
+
+/* Control */
+.control {
+    display: flex;
+    margin: 24px 0; 
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.6rem;
+}
+
+/* CD */
+
+.cd {
+    display: flex;
+    margin: auto;
+    width: 200px;
+}
+
+.cd-thumb {
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 100%;
+    margin: 20px 0; 
+}
+
+
+/* Input */
+
+.btn.btn-toggle-play{
+    background-color: var(--red-color);
+    padding: 12px 14px;
+    border-radius: 50%;
+}
+
+.icon-pause{
+    color: var(--white-color);
+}
+
+.icon-play{
+    color: var(--white-color);
+}
+
+.player .icon-pause {
+    display: none;
+}
+.player.playing .icon-pause {
+    display: inline-block;
+}
+.player.playing .icon-play {
+    display: none;
+}
+
+input#progress {
+    width: 100%;
+}
+
+.btn-repeat:active{
+    color: var(--red-color);
+}
+
+.btn-random:active{
+    color: var(--red-color);
+}
+
+/* Play List */
+.playlist{
+    margin-top: 444px;
+    padding: 12px;
+}
+
+.song {
+    display: flex;
+    justify-content: space-between;
+    background: var(--white-color);
+    border: 1px solid #ebebeb;
+    margin: 12px 0;
+}
+
+.song.active{
+    color: var(--red-color);
+}
+
+.song:active{
+    opacity: 0.8;
+}
+
+.body{
+    text-align: center;
+}
+
+.thumb {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 16%;
+}
+
+h3.title {
+    font-size: 1.4rem;
+    margin: 10px 0;
+}
+
+p.author {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.option {
+    padding: 10px;
+    font-size: 1.8rem;
+}

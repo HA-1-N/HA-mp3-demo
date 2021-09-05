@@ -1,0 +1,30 @@
+:root{
+    --black-color: #000;
+    --white-color: #fff;
+    --text-color: #555555;
+    --blue-color: #14b9d5;
+    --red-color: #f76570;
+    --green-color: #1bbc9b;
+    --orangi-color: #f3a46b;
+    --yellow-color: #ffd205;
+    --purpose-color: #ba71da;
+
+    --width-ul: 190px;
+    --background-color-hover: rgb(249, 249, 249);
+}
+
+*{
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.active{
+    color: var(--red-color);
+}
