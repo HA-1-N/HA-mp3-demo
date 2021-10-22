@@ -19,67 +19,67 @@ const playList = $('.playlist');
 
 const app = { //Object
 
-    currentIndex : 0,
+    currentIndex: 0,
     isPlaying: false,
     isRandom: false,
     isRepeat: false,
     config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
 
-    songs: [ 
+    songs: [
         {
             name: "Cố Giang Tình",
             singer: "X2X",
-            path : "./assets/music/CoGiangTinh-X2X-6257264.mp3",
-            img : "./assets/img/Img_music/img_music_1.jpg",
+            path: "./assets/music/CoGiangTinh-X2X-6257264.mp3",
+            img: "./assets/img/Img_music/img_music_1.jpg",
         },
 
         {
             name: "Cô Thắm Không Về",
             singer: "Phat Ho, Jokes",
-            path : "./assets/music/CoThamKhongVe-PhatHoJokesBiiThien-6067247.mp3",
-            img : "./assets/img/Img_music/img_music_2.jpg",
+            path: "./assets/music/CoThamKhongVe-PhatHoJokesBiiThien-6067247.mp3",
+            img: "./assets/img/Img_music/img_music_2.jpg",
         },
 
         {
             name: "Độ Tộc 2",
             singer: "Masew, DoMixi, PhucDu, Phao",
-            path : "./assets/music/DoToc2-MasewDoMixiPhucDuPhao-7064730.mp3",
-            img : "./assets/img/Img_music/img_do_toc_2.jpg",
+            path: "./assets/music/DoToc2-MasewDoMixiPhucDuPhao-7064730.mp3",
+            img: "./assets/img/Img_music/img_do_toc_2.jpg",
         },
 
         {
             name: "Gác Lại Âu Lo",
             singer: "DaLAB, MiuLe",
-            path : "./assets/music/GacLaiAuLo-DaLABMiuLe-6360815.mp3",
-            img : "./assets/img/Img_music/img_gac_lai_au_lo.jpg",
+            path: "./assets/music/GacLaiAuLo-DaLABMiuLe-6360815.mp3",
+            img: "./assets/img/Img_music/img_gac_lai_au_lo.jpg",
         },
 
         {
             name: "Mình cưới nhau đi",
             singer: "HuynhJames, Pjnboys",
-            path : "./assets/music/MinhCuoiNhauDi-HuynhJamesPjnboys-5382380.mp3",
-            img : "./assets/img/Img_music/img_minh_cuoi_nhau_di.jpg",
+            path: "./assets/music/MinhCuoiNhauDi-HuynhJamesPjnboys-5382380.mp3",
+            img: "./assets/img/Img_music/img_minh_cuoi_nhau_di.jpg",
         },
 
         {
             name: "Nguoi-Am-Phu-EDM-Version",
             singer: "OSAD, Khanh Vy",
-            path : "./assets/music/Nguoi-Am-Phu-EDM-Version-OSAD-Khanh-Vy.mp3",
-            img : "./assets/img/Img_music/img_nguoi_am_phu.jpg",
+            path: "./assets/music/Nguoi-Am-Phu-EDM-Version-OSAD-Khanh-Vy.mp3",
+            img: "./assets/img/Img_music/img_nguoi_am_phu.jpg",
         },
 
         {
             name: "Take Me Hand",
             singer: "Daishi",
-            path : "./assets/music/Take-Me-Hand-Daishi-Dance.mp3",
-            img : "./assets/img/Img_music/img_take_me_hand.jpg",
+            path: "./assets/music/Take-Me-Hand-Daishi-Dance.mp3",
+            img: "./assets/img/Img_music/img_take_me_hand.jpg",
         },
 
         {
             name: "Vách Ngọc Nga",
             singer: "AnhRong",
-            path : "./assets/music/VachNgocNga-AnhRong-6984991.mp3",
-            img : "./assets/img/Img_music/img_vach_ngoc_nga.jpg",
+            path: "./assets/music/VachNgocNga-AnhRong-6984991.mp3",
+            img: "./assets/img/Img_music/img_vach_ngoc_nga.jpg",
         },
     ],
 
@@ -112,7 +112,7 @@ const app = { //Object
         playList.innerHTML = htmls.join('');
     },
 
-    defineProperties: function() {
+    defineProperties: function () {
         Object.defineProperty(this, 'currentSong', {
             get: function () {
                 return this.songs[this.currentIndex];
@@ -139,7 +139,7 @@ const app = { //Object
 
         // Xử lý CD quay / Dừng
         const cdThumbAnimate = cdThumb.animate([
-            {transform: 'rotate(360deg)'}
+            { transform: 'rotate(360deg)' }
         ], {
             duration: 10000, //10s
             iterations: Infinity,
@@ -151,7 +151,7 @@ const app = { //Object
 
             if (_this.isPlaying) {
                 audio.pause();
-            }else{
+            } else {
                 audio.play();
             }
         }
@@ -163,8 +163,8 @@ const app = { //Object
             cdThumbAnimate.play();
         }
 
-         // Khi bài hát pause
-         audio.onpause = function () {
+        // Khi bài hát pause
+        audio.onpause = function () {
             _this.isPlaying = false;
             player.classList.remove('playing');
             cdThumbAnimate.pause();
@@ -179,7 +179,7 @@ const app = { //Object
         }
 
         // Xu ly khi tua Song
-        progress.onchange = function (e) {
+        progress.oninput = function (e) {
             const seekTime = audio.duration / 100 * e.target.value;
             audio.currentTime = seekTime;
         }
@@ -236,9 +236,9 @@ const app = { //Object
         playList.onclick = function (e) {
 
             const songNode = e.target.closest('.song:not(.active)');
-            
+
             if (songNode || !e.target.closest('.option')) {
-                
+
                 // Xử lý khi click vao song
                 if (songNode) {
                     _this.currentIndex = Number(songNode.dataset.index);
@@ -250,19 +250,27 @@ const app = { //Object
                 // Xu ly khi click vao song option
             }
         }
-        
+
     },
 
     scrollToActiveSong: function () {
         setTimeout(() => {
-            $('.song.active').scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest',
-            });
+
+            if (this.currentIndex == 0) {
+                $('.song.active').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'end',
+                });
+            } else {
+                $('.song.active').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                });
+            }
         }, 200);
     },
 
-    loadCurrentSong: function() {
+    loadCurrentSong: function () {
 
         heading.textContent = this.currentSong.name;
         cdThumb.style.backgroundImage = `url('${this.currentSong.img}')`;
@@ -271,14 +279,14 @@ const app = { //Object
     },
 
     loadConfig: function () {
-        this.isRandom = this.config.isRandom;   
-        this.isRepeat = this.config.isRepeat;  
-        
+        this.isRandom = this.config.isRandom;
+        this.isRepeat = this.config.isRepeat;
+
         // Object.assign(this, this.config); //C2
     },
 
     // Next Song
-    nextSong: function() {
+    nextSong: function () {
         this.currentIndex++;
         if (this.currentIndex >= this.songs.length) {
             this.currentIndex = 0;
@@ -313,10 +321,10 @@ const app = { //Object
 
         // Dinh nghia cac thuoc tinh cho Object
         this.defineProperties();
-        
+
         //Lắng nghe / xử lý các sự kiện
         this.handleEvents();
-        
+
         //Tải bài hát đầu tiên vào UI khi chạy ứng dụng
         this.loadCurrentSong();
 
